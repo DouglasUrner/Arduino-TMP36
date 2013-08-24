@@ -43,8 +43,6 @@ float TMP36::degC()
 {
   int rawA2D   = analogRead(_pin);
   float volts = (rawA2D * _aRef) / A2D_FULL_SCALE;
-  DEBUG5("TMP36 reading on pin ", _pin, ": ", a2din, " counts");
-  DEBUG5("TMP36 reading on pin ", _pin, ": ", volts, " volts");
 
   /*
    * Convert voltage to temperature in degrees C. Voltage is proportional
@@ -54,8 +52,6 @@ float TMP36::degC()
    * degrees C = (volts - 500 mV (offset) ) * 100 (mV / degree)
    */
   float degC = (volts - 0.5) * 100;
-  DEBUG5("TMP36 reading on pin ", _pin, ": ", degC, " degrees C");
-  DEBUG7(now(), "\t", a2din, "\t", volts, "\t", degC);
 
   return degC;
 }
